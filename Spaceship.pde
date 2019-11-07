@@ -1,4 +1,11 @@
-class Spaceship //extends Floater  
+/*class Spaceship extends Floater
 {   
-    //your code here
+    Spaceship(){
+
+    }
+    public void show(){
+
+    }
+    public void move();
 }
+*/
