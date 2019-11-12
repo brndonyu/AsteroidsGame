@@ -1,22 +1,37 @@
 class Spaceship extends Floater
 {   
-
+    /*
+    public int [] bxCorners;
+    public int [] byCorners;
+    public int bcorners;
+    */
     public Spaceship(){
     	myCenterX = cx;
     	myCenterY = cy;
-    	corners = 4;
+    	corners = 18;
     	xCorners = new int [corners];
-        int [] tempCorX = {20,-20,-15,-20};
+        int [] tempCorX = {50,40,0,10,60,70,0,-20,-10, -15 ,-10,-20,0,70,60,10,0,40};
         xCorners = tempCorX;
 
     	yCorners = new int [corners];
-        int [] corY = {0,-10,0,10};
+        int [] corY = {0,5,5,15,15,20,20,10,5, 0 ,-5,-10,-20,-20,-15,-15,-5,-5,0};
         yCorners = corY;
 
     	myColor = color(255,255,255);
     	myDirectionX = 0;
     	myDirectionY = 0;
     	myPointDirection = 0;
+
+        /*
+        bcorners = 14;
+        bxCorners = new int [bcorners];
+        int [] tempBX = {-15,-10,-20,-25,-27,-32, -30,-35,-30,-32,-27,-25,-20,-10};
+        bxCorners = tempBX;
+
+        byCorners = new int [bcorners];
+        int [] tempBY = {0,5,10,15,10,12, 5,0,-5,-12,-10,-15,-10,-5};
+        byCorners = tempBY;
+        */
     }
     public void setX(int x){
     	myCenterX = x;
@@ -61,10 +76,18 @@ class Spaceship extends Floater
       		vertex(xCorners[nI], yCorners[nI]);
     	}
     	endShape(CLOSE);
+        /*
+        fill(255,0,0);
+        beginShape();
+        for (int nII = 0; nII < bcorners; nII++){
+            vertex(bxCorners[nII], byCorners[nII]);
+        }
+        endShape(CLOSE);
 
     	//"unrotate" and "untranslate" in reverse order
     	rotate(-1*dRadians);
     	translate(-1*(float)myCenterX, -1*(float)myCenterY);
-
+        */
     }
+
 }
