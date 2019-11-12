@@ -3,11 +3,11 @@ private Star [] stars;
 private Spaceship ship;
 private int cx = 600;
 private int cy = 400;
-boolean hyperspace = false;
-boolean rotatingLeft = false;
-boolean rotatingRight = false;
-boolean forward = false;
-boolean backward = false;
+private boolean hyperspace = false;
+private boolean rotatingLeft = false;
+private boolean rotatingRight = false;
+private boolean forward = false;
+private boolean backward = false;
 
 public void setup() 
 {
@@ -30,25 +30,19 @@ public void draw()
 {
   background(0);
   fill(255);
-	for(int i = 0; i < stars.length; i++){
-		stars[i].show();
-	}
+	for(int i = 0; i < stars.length; i++){stars[i].show();}
   strokeWeight(0);
   ship.show();
   ship.move();
   startHyperSpace();
-  if(forward == true){
-    ship.accelerate(0.5);
-  }
-  if(backward == true){
-    ship.accelerate(-0.5);
-  }
-  if(rotatingLeft == true){
-      ship.turn(-5);
-  }
-  if(rotatingRight == true){
-    ship.turn(5);
-  }
+  if(forward == true){ship.accelerate(0.5);}
+
+  if(backward == true){ship.accelerate(-0.5);}
+
+  if(rotatingLeft == true){ship.turn(-5);}
+
+  if(rotatingRight == true){ship.turn(5);}
+
 }
 
 public void startHyperSpace(){
@@ -56,6 +50,8 @@ public void startHyperSpace(){
         ship.setX((int)(Math.random()*1200));
         ship.setY((int)(Math.random()*600));
         ship.setPointDirection((int)(Math.random()*360));
+        ship.setDirectionX(0);
+        ship.setDirectionY(0);
     }
     hyperspace = false;
 }
