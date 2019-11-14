@@ -1,8 +1,8 @@
-private int x,y,a,b,c;
+private int x,y,a,b,c,d;
 private Star [] stars;
 private Spaceship ship;
 private int cx = 600;
-private int cy = 400;
+private int cy = 350;
 private boolean hyperspace = false;
 private boolean rotatingLeft = false;
 private boolean rotatingRight = false;
@@ -12,7 +12,7 @@ private boolean backward = false;
 public void setup() 
 {
 	background(0);
-  size(1200,800);
+  size(1200,700);
   ship = new Spaceship();
   stars = new Star [200];
   for(int i = 0; i < stars.length; i++){
@@ -22,7 +22,8 @@ public void setup()
   	a = (int)(Math.random()*255)+1;
   	b = (int)(Math.random()*255)+1;
   	c = (int)(Math.random()*255)+1;
-  	stars[i] = new Star(x,y,a,b,c);
+    d = (int)(Math.random()*10)+1;
+  	stars[i] = new Star(x,y,a,b,c,d);
   }
 
 }
