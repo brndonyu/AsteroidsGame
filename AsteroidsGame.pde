@@ -1,6 +1,8 @@
 private int x,y,a,b,c,d;
 private Star [] stars;
 private Spaceship ship;
+private ArrayList <Asteroid> asteroidList = new ArrayList <Asteroid> ();
+private Asteroid bob;
 private int cx = 600;
 private int cy = 350;
 private boolean hyperspace = false;
@@ -14,6 +16,7 @@ public void setup()
 	background(0);
   size(1200,700);
   ship = new Spaceship();
+  bob = new Asteroid();
   stars = new Star [200];
   for(int i = 0; i < stars.length; i++){
     strokeWeight((float)(Math.random()*4));
@@ -35,6 +38,9 @@ public void draw()
   strokeWeight(0);
   ship.show();
   ship.move();
+  bob.show();
+  bob.move();
+
   startHyperSpace();
   if(forward == true){ship.accelerate(0.5);}
 
