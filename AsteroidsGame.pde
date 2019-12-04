@@ -17,6 +17,9 @@ public void setup()
   size(1200,700);
   ship = new Spaceship();
   bob = new Asteroid();
+  for(int i = 0; i < 10; i++){
+    //asteroidList.add()
+  }
   stars = new Star [200];
   for(int i = 0; i < stars.length; i++){
     strokeWeight((float)(Math.random()*4));
