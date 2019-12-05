@@ -22,7 +22,6 @@ public void setup()
   }
   stars = new Star [200];
   for(int i = 0; i < stars.length; i++){
-    strokeWeight((float)(Math.random()*4));
   	x = (int)(Math.random()*1200)+1;
   	y = (int)(Math.random()*800)+1;
   	a = (int)(Math.random()*255)+1;
