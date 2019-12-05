@@ -18,7 +18,7 @@ public void setup()
   ship = new Spaceship();
   bob = new Asteroid();
   for(int i = 0; i < 10; i++){
-    //asteroidList.add()
+    asteroidList.add(new Asteroid());
   }
   stars = new Star [200];
   for(int i = 0; i < stars.length; i++){
@@ -43,7 +43,11 @@ public void draw()
   ship.move();
   bob.show();
   bob.move();
-
+  for(int i = 0; i < asteroidList.size(); i++){
+    Asteroid temp = asteroidList.get(i);
+    temp.show();
+    temp.move();
+  }
   startHyperSpace();
   if(forward == true){ship.accelerate(0.5);}
 
