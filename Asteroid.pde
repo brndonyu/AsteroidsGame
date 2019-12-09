@@ -6,10 +6,10 @@ class Asteroid extends Floater
 		myColor = (156);
 		myCenterX = (Math.random()*1200)+1;
 		myCenterY = (Math.random()*700)+1;
-		corners = 8;
-		int [] astX = {10,15,15,10,-10,-15,-15,-10};
-		int [] astY = {-15,-10,10,15,15,10,-10,-15};
-		for(int i = 0; i < 8; i++){
+		corners = 4;
+		int [] astX = {10,10,-10,-10};
+		int [] astY = {-15,15,15,-15};
+		for(int i = 0; i < corners; i++){
 			astX[i] = astX[i]*(int)((Math.random()*2)+1);
 			astY[i] = astY[i]*(int)((Math.random()*2)+1);
 		}
