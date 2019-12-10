@@ -1,7 +1,6 @@
 public class Bullet extends Floater{
 
 	public Bullet(){
-	myColor = (16711680);
 	myCenterX = ship.myCenterX;
 	myCenterY = ship.myCenterY;
 	myDirectionX = ship.myDirectionX;
@@ -12,7 +11,8 @@ public class Bullet extends Floater{
 		super.move();
 	}
 	public void show(){
-		new Circle(5);
+		fill(255,0,0);
+		ellipse((float)myCenterX,(float)myCenterY,100,100);
 	}
 
 	public void setX(int x){myCenterX = x;}

@@ -2,6 +2,7 @@ private int x,y,a,b,c,d;
 private Star [] stars;
 private Spaceship ship;
 private ArrayList <Asteroid> asteroidList = new ArrayList <Asteroid> ();
+private ArrayList <Bullet> bulletList = new ArrayList <Bullet> ();
 private int cx = 600;
 private int cy = 350;
 private boolean hyperspace = false;
@@ -10,6 +11,7 @@ private boolean rotatingRight = false;
 private boolean forward = false;
 private boolean backward = false;
 
+private Bullet bob;
 public void setup() 
 {
 	background(0);
@@ -18,6 +20,7 @@ public void setup()
   for(int i = 0; i < 10; i++){
     asteroidList.add(new Asteroid());
   }
+  bob = new Bullet();
   stars = new Star [200];
   for(int i = 0; i < stars.length; i++){
   	x = (int)(Math.random()*1200)+1;
@@ -38,6 +41,8 @@ public void draw()
   strokeWeight(0);
   ship.show();
   ship.move();
+  bob.show();
+
   for(int i = 0; i < asteroidList.size(); i++){
     Asteroid temp = asteroidList.get(i);
     temp.show();
