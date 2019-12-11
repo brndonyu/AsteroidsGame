@@ -3,8 +3,20 @@ public class Bullet extends Floater{
 	public Bullet(){
 	myCenterX = ship.myCenterX;
 	myCenterY = ship.myCenterY;
-	myDirectionX = ship.myDirectionX;
-	myDirectionY = ship.myDirectionY;
+	if(ship.myDirectionX >= 0){
+		myDirectionX = ship.myDirectionX + 10;
+	}
+	else
+	{
+		myDirectionX = ship.myDirectionX-10;
+	}
+	if(ship.myDirectionY >= 0){
+		myDirectionY = ship.myDirectionY + 10;
+	}
+	else
+	{
+		myDirectionY = ship.myDirectionY - 10;
+	}
 	myPointDirection = ship.myPointDirection;
 	}
 	public void move(){
@@ -12,7 +24,7 @@ public class Bullet extends Floater{
 	}
 	public void show(){
 		fill(255,0,0);
-		ellipse((float)myCenterX,(float)myCenterY,100,100);
+		ellipse((float)myCenterX,(float)myCenterY,5,5);
 	}
 
 	public void setX(int x){myCenterX = x;}

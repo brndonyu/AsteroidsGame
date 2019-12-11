@@ -5,13 +5,13 @@ private ArrayList <Asteroid> asteroidList = new ArrayList <Asteroid> ();
 private ArrayList <Bullet> bulletList = new ArrayList <Bullet> ();
 private int cx = 600;
 private int cy = 350;
+private boolean shooting = false;
 private boolean hyperspace = false;
 private boolean rotatingLeft = false;
 private boolean rotatingRight = false;
 private boolean forward = false;
 private boolean backward = false;
 
-private Bullet bob;
 public void setup() 
 {
 	background(0);
@@ -20,7 +20,6 @@ public void setup()
   for(int i = 0; i < 10; i++){
     asteroidList.add(new Asteroid());
   }
-  bob = new Bullet();
   stars = new Star [200];
   for(int i = 0; i < stars.length; i++){
   	x = (int)(Math.random()*1200)+1;
@@ -41,13 +40,17 @@ public void draw()
   strokeWeight(0);
   ship.show();
   ship.move();
-  bob.show();
 
   for(int i = 0; i < asteroidList.size(); i++){
-    Asteroid temp = asteroidList.get(i);
-    temp.show();
-    temp.move();
+    Asteroid asteroid = asteroidList.get(i);
+    asteroid.show();
+    asteroid.move();
   }
+  for(int i = 0; i < bulletList.size(); i++){
+    Bullet bullet = bulletList.get(i);
+    bullet.move();
+    bullet.show();
+}
   startHyperSpace();
   if(forward == true){ship.accelerate(0.25);}
 
@@ -56,6 +59,8 @@ public void draw()
   if(rotatingLeft == true){ship.turn(-5);}
 
   if(rotatingRight == true){ship.turn(5);}
+
+  if(shooting == true){bulletList.add(new Bullet());}
 
 }
 
@@ -86,6 +91,9 @@ public void keyPressed(){
   if(key == 'r' || key == 'R'){
     hyperspace = true;
   }
+  if(key == ' '){
+    shooting = true;
+  }
 }
 void keyReleased(){
   if(key == 'w' || key == 'W'){
@@ -99,5 +107,8 @@ void keyReleased(){
   }
   if(key == 'd' || key == 'D'){
     rotatingRight = false;
+  }
+  if(key == ' '){
+    shooting = false;
   }
 }
