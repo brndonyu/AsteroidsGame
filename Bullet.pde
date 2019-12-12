@@ -3,22 +3,12 @@ public class Bullet extends Floater{
 	public Bullet(){
 	myCenterX = ship.myCenterX;
 	myCenterY = ship.myCenterY;
-	if(ship.myDirectionX >= 0){
-		myDirectionX = ship.myDirectionX + 10;
-	}
-	else
-	{
-		myDirectionX = ship.myDirectionX-10;
-	}
-	if(ship.myDirectionY >= 0){
-		myDirectionY = ship.myDirectionY + 10;
-	}
-	else
-	{
-		myDirectionY = ship.myDirectionY - 10;
-	}
+	myDirectionX = ship.myDirectionX;
+	myDirectionY = ship.myDirectionY;
 	myPointDirection = ship.myPointDirection;
+
 	}
+	
 	public void move(){
 		super.move();
 	}
