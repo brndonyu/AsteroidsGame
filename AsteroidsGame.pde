@@ -13,13 +13,14 @@ private boolean forward = false;
 private boolean backward = false;
 private int bulletCount = 0;
 private int shipHealth = 10;
+private int maxAsteroid = 10;
 
 public void setup() 
 {
 	background(0);
   size(1200,700);
   ship = new Spaceship();
-  for(int i = 0; i < 20; i++){
+  for(int i = 0; i < maxAsteroid; i++){
     asteroidList.add(new Asteroid());
   }
   stars = new Star [200];
@@ -36,7 +37,8 @@ public void setup()
 }
 public void draw() 
 {
-  System.out.println(shipHealth);
+  System.out.println(asteroidList.size());
+  System.out.println(second());
   background(0);
   fill(255);
 	for(int i = 0; i < stars.length; i++){stars[i].show();}
@@ -56,9 +58,10 @@ public void draw()
     bullet.show();
 
   }
+  spawn();
   startHyperSpace();
   shipHitbox();
-  //bulletHitbox();
+  bulletHitbox();
   healthbar();
   victory();
   death();
@@ -86,18 +89,26 @@ public void shipHitbox(){
     }
   }
 }
-/*
+
 public void bulletHitbox(){
   for(int i = 0; i < bulletList.size();i++){
-      for(int u = 0; i < asteroidList.size(); i++){
-          if(dist(bulletList.get(i).getX(), bulletList.get(i).getY(),asteroidList.get(u).getX(),asteroidList.get(u).getY()) < 30){
-            bulletList.remove(i);
+      for(int u = 0; u < asteroidList.size(); u++){
+          if(dist(asteroidList.get(u).getX(),asteroidList.get(u).getY(),bulletList.get(i).getX(), bulletList.get(i).getY()) < 30){
             asteroidList.remove(u);
+            bulletList.remove(i);
+            break;
           }
       }
     }
   }
-*/
+public void spawn(){
+  int t = second();
+  if(t % 5 == 0){
+    if(frameCount % 15 == 0){
+      asteroidList.add(new Asteroid());
+    }
+  }
+}
 public void victory(){
   if(asteroidList.size() == 0){
       noLoop();
@@ -122,6 +133,8 @@ public void healthbar(){
   rect(27.5,652.5,445,20);
   fill(255,0,0);
   rect(30,655,44*shipHealth,15);
+  textSize(25);
+  text("Health",25,637.5);
 }
 public void startHyperSpace(){
     if(hyperspace == true){
