@@ -10,7 +10,8 @@ public class Bullet extends Floater{
 	}
 	
 	public void move(){
-		super.move();
+		myCenterX += myDirectionX;    
+    	myCenterY += myDirectionY; 
 	}
 	public void show(){
 		fill(255,0,0);
