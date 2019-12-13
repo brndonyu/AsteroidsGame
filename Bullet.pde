@@ -1,10 +1,10 @@
 public class Bullet extends Floater{
 
 	public Bullet(){
-	myCenterX = ship.myCenterX;
-	myCenterY = ship.myCenterY;
-	myDirectionX = ship.myDirectionX;
-	myDirectionY = ship.myDirectionY;
+	myCenterX = ship.getX();
+	myCenterY = ship.getY();
+	myDirectionX = ship.getDirectionX();
+	myDirectionY = ship.getDirectionY();
 	myPointDirection = ship.myPointDirection;
 
 	}

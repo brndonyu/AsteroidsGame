@@ -19,7 +19,7 @@ public void setup()
 	background(0);
   size(1200,700);
   ship = new Spaceship();
-  for(int i = 0; i < 10; i++){
+  for(int i = 0; i < 20; i++){
     asteroidList.add(new Asteroid());
   }
   stars = new Star [200];
@@ -55,10 +55,13 @@ public void draw()
     bullet.accelerate(1);
     bullet.show();
 
-}
+  }
   startHyperSpace();
   shipHitbox();
-  bulletHitbox();
+  //bulletHitbox();
+  healthbar();
+  victory();
+  death();
 
   if(forward == true){ship.accelerate(0.25);}
 
@@ -69,7 +72,7 @@ public void draw()
   if(rotatingRight == true){ship.turn(5);}
 
   if(shooting == true){
-    if(frameCount % 10 ==0){
+    if(frameCount % 20 ==0){
       bulletList.add(new Bullet());
 
     }
@@ -77,24 +80,49 @@ public void draw()
 }
 public void shipHitbox(){
   for(int i = 0; i < asteroidList.size();i++){
-      if(dist((float)asteroidList.get(i).myCenterX,(float)asteroidList.get(i).myCenterY,(float)ship.myCenterX,(float)ship.myCenterY) < 30){
+      if(dist(asteroidList.get(i).getX(),asteroidList.get(i).getY(),ship.getX(),ship.getY()) < 30){
         shipHealth--;
         asteroidList.remove(i);
-
     }
   }
 }
 /*
 public void bulletHitbox(){
-  for(int i = 0; i < asteroidList.size();i++){
-      if(dist((float)asteroidList.get(i).myCenterX,(float)asteroidList.get(i).myCenterY,(float)bulletList.get(i).myCenterX,(float)bulletList.get(i).myCenterY) < 30){     
-        asteroidList.remove(i);
-        bulletList.remove(i);
-
+  for(int i = 0; i < bulletList.size();i++){
+      for(int u = 0; i < asteroidList.size(); i++){
+          if(dist(bulletList.get(i).getX(), bulletList.get(i).getY(),asteroidList.get(u).getX(),asteroidList.get(u).getY()) < 30){
+            bulletList.remove(i);
+            asteroidList.remove(u);
+          }
+      }
     }
   }
-}
 */
+public void victory(){
+  if(asteroidList.size() == 0){
+      noLoop();
+      fill(0,255,0);
+      textAlign(CENTER);
+      textSize(50);
+      text("You Won!",cx,cy);
+    }
+}
+public void death(){
+  if(shipHealth == 0){
+    noLoop();
+    textAlign(CENTER);
+    textSize(50);
+    text("You Lost!",cx,cy);
+  }
+}
+public void healthbar(){
+  fill(255,0,0);
+  rect(25,650,450,25,5);
+  fill(0);
+  rect(27.5,652.5,445,20);
+  fill(255,0,0);
+  rect(30,655,44*shipHealth,15);
+}
 public void startHyperSpace(){
     if(hyperspace == true){
         ship.setX((int)(Math.random()*1200));

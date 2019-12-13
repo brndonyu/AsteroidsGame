@@ -12,7 +12,7 @@ class Spaceship extends Floater
 
     	myCenterX = cx;
     	myCenterY = cy;
-    	corners = 4;
+    	corners = ship1X.length;
     	
     	xCorners = new int [corners]; 
         xCorners = ship1X;
