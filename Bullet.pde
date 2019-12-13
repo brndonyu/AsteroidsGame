@@ -5,7 +5,7 @@ public class Bullet extends Floater{
 	myCenterY = ship.getY();
 	myDirectionX = ship.getDirectionX();
 	myDirectionY = ship.getDirectionY();
-	myPointDirection = ship.myPointDirection;
+	myPointDirection = ship.getPointDirection();
 
 	}
 	

@@ -15,6 +15,8 @@ private int bulletCount = 0;
 private int shipHealth = 10;
 private int maxAsteroid = 10;
 private int counter = 0;
+private boolean shieldUp = true;
+private int shieldHealth = 10;
 
 public void setup() 
 {
@@ -42,8 +44,6 @@ public void draw()
   fill(255);
 	for(int i = 0; i < stars.length; i++){stars[i].show();}
   strokeWeight(0);
-  ship.show();
-  ship.move();
 
   for(int i = 0; i < asteroidList.size(); i++){
     Asteroid asteroid = asteroidList.get(i);
@@ -57,12 +57,15 @@ public void draw()
     bullet.show();
 
   }
+  ship.show();
+  ship.move();
   spawn();
   startHyperSpace();
   shipHitbox();
   bulletHitbox();
   score();
   healthbar();
+  shield();
   victory();
   death();
 
@@ -145,13 +148,23 @@ public void death(){
 }
 public void healthbar(){
   fill(255,0,0);
+  rect(25,575,450,25,5);
+  fill(0);
+  rect(27.5,577.5,445,20);
+  fill(255,0,0);
+  rect(30,580,44*shipHealth,15);
+  textSize(25);
+  text("Health",25,557.5);
+}
+public void shield(){
+  fill(55,141,253);
   rect(25,650,450,25,5);
   fill(0);
   rect(27.5,652.5,445,20);
-  fill(255,0,0);
-  rect(30,655,44*shipHealth,15);
+  fill(55,141,253);
+  rect(30,655,44*shieldHealth,15);
   textSize(25);
-  text("Health",25,637.5);
+  text("Shield",25,632.5);
 }
 public void startHyperSpace(){
     if(hyperspace == true){
