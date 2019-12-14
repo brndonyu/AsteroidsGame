@@ -57,6 +57,13 @@ public void draw()
     bullet.show();
 
   }
+  if(shieldHealth == 0){
+    shieldUp = false;
+  }
+  if(shieldUp == true){
+    shieldOn();
+  }
+  shieldHitbox();
   ship.show();
   ship.move();
   spawn();
@@ -65,7 +72,7 @@ public void draw()
   bulletHitbox();
   score();
   healthbar();
-  shield();
+  shieldbar();
   victory();
   death();
 
@@ -108,7 +115,18 @@ public void shipHitbox(){
     }
   }
 }
-
+public void shieldHitbox(){
+  if(shieldUp == true){
+    for(int p = 0; p < asteroidList.size(); p++){
+      if(dist(asteroidList.get(p).getX(),asteroidList.get(p).getY(),ship.getX(),ship.getY()) < 80){
+        asteroidList.remove(p);
+        shieldHealth--;
+        counter++;
+        break;
+      }
+    }
+  }
+}
 public void bulletHitbox(){
   for(int i = 0; i < bulletList.size();i++){
       for(int u = 0; u < asteroidList.size(); u++){
@@ -156,7 +174,7 @@ public void healthbar(){
   textSize(25);
   text("Health",25,557.5);
 }
-public void shield(){
+public void shieldbar(){
   fill(55,141,253);
   rect(25,650,450,25,5);
   fill(0);
@@ -166,6 +184,13 @@ public void shield(){
   textSize(25);
   text("Shield",25,632.5);
 }
+public void shieldOn(){
+  fill(55,141,253);
+  ellipse(ship.getX(),ship.getY(),50,50);
+  fill(0);
+  ellipse(ship.getX(),ship.getY(),40,40);
+}
+
 public void startHyperSpace(){
     if(hyperspace == true){
         ship.setX((int)(Math.random()*1200));
@@ -176,6 +201,7 @@ public void startHyperSpace(){
     }
     hyperspace = false;
 }
+
 public void keyPressed(){
   if(key == 'w' || key == 'W'){
     forward = true;

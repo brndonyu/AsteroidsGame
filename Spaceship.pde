@@ -2,13 +2,8 @@ class Spaceship extends Floater
 {   
 
     public Spaceship(){
-        /*private*/ int [] ship1X = {15,-9,0,-9};
-        /*private*/ int [] ship1Y = {0,-9,0,9};
-        //4 corners
-
-    	/*private*/ int [] ship2X = {15,10,20,0,-70,-60,-10,0,-40,-50,-40,0,-10,-60,-70,0,20,10};
-        /*private*/ int [] ship2Y = {0, 5, 10,20,20, 15, 15,5, 5,  0, -5,-5,-15,-15,-20,-20,-10,-5};
-        //18 corners
+        int [] ship1X = {15,-9,0,-9};
+        int [] ship1Y = {0,-9,0,9};
 
     	myCenterX = cx;
     	myCenterY = cy;
