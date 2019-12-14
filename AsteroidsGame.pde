@@ -159,6 +159,7 @@ public void victory(){
 public void death(){
   if(shipHealth == 0){
     noLoop();
+    fill(255,0,0);
     textAlign(CENTER);
     textSize(50);
     text("You Lost!",cx,cy);
