@@ -17,6 +17,7 @@ private int maxAsteroid = 10;
 private int counter = 0;
 private boolean shieldUp = true;
 private int shieldHealth = 10;
+private boolean bonus = false;
 
 public void setup() 
 {
@@ -57,9 +58,8 @@ public void draw()
     bullet.show();
 
   }
-  if(shieldHealth == 0){
-    shieldUp = false;
-  }
+
+  shieldCheck();
   if(shieldUp == true){
     shieldOn();
   }
@@ -70,6 +70,11 @@ public void draw()
   startHyperSpace();
   shipHitbox();
   bulletHitbox();
+  bonusCheck();
+  if(bonus == true){
+    regen();
+    bonus = false;
+  }
   score();
   healthbar();
   shieldbar();
@@ -90,6 +95,22 @@ public void draw()
 
     }
   }
+}
+public void shieldCheck(){
+  if(shieldHealth > 0){
+    shieldUp = true;
+  }
+  if(shieldHealth == 0){
+    shieldUp = false;
+  }
+}
+public void bonusCheck(){
+  if(counter % 20 == 0){
+    bonus = true;
+  }
+}
+public void regen(){
+  shieldHealth = 10;
 }
 public void score(){
   fill(255);
